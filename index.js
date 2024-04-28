@@ -52,10 +52,14 @@ function displayWeatherInfo(data){
     const tempDisplay = document.createElement("p")
     const humidityDisplay = document.createElement("p")
     const descDisplay = document.createElement("p")
-    const weatherEmoji = document.createElement("h1")
+    const weatherEmoji = document.createElement("p")
 
     cityDisplay.textContent = city;
-    tempDisplay.textContent = `${temp}°K`
+    tempDisplay.textContent = `${((temp - 273.15) * 9/5 + 32).toFixed(1)}°F`;
+    humidityDisplay.textContent = `Humidity: ${humidity}%`;
+    descDisplay.textContent = description;
+    weatherEmoji.textContent = getWeatherEmoji(id)
+
 
     //add the class atributes from the css file to the proper elements
     cityDisplay.classList.add("cityDisplay")
@@ -73,7 +77,24 @@ function displayWeatherInfo(data){
 }
 
 function getWeatherEmoji(weatherId) {
-
+    switch(true){
+        case (weatherId >= 200 && weatherId < 300):
+            return "⛈️";
+        case (weatherId >= 300 && weatherId < 400):
+            return "☔️";
+        case (weatherId >= 500 && weatherId < 600):
+            return "🌧️";
+        case (weatherId >= 600 && weatherId < 700):
+            return "❄️";
+        case (weatherId >= 700 && weatherId < 800):
+            return "🌫️";
+        case (weatherId === 800):
+            return "🌞";
+        case (weatherId >= 801 && weatherId < 810):
+            return "☁️";
+        default:
+        return "❓";
+    }
 }
 
 function displayError(message) {
