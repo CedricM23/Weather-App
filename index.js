@@ -41,9 +41,9 @@ async function getWeatherData(city) {
 
 function displayWeatherInfo(data){
     console.log(data)
-    const  {name: city, 
-        main:{temp, humidity}, 
-        weather: [{description, id}]} = data;
+    const  {name: city,  //object destructuring to get the elements of the object
+        main:{temp, humidity}, //object destructuring to get the elements of the object
+        weather: [{description, id}]} = data; //array destructuring to get the elements of the array
 
     card.textContent = "";
     card.style.display = "flex";
