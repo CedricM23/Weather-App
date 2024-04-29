@@ -20,7 +20,7 @@ weatherForm.addEventListener("submit", async event => {
             displayError(error);
         }
     } else {
-        displayError("Please enter a city")
+        displayError("No city entered")
     }
 });
 
