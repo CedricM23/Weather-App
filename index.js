@@ -43,20 +43,27 @@ function displayWeatherInfo(data){
     console.log(data)
     const {name: city, //destructure the data object
         main:{temp, humidity}, //destructure the main object
-        weather: [{description, id}]} //destructure the first object in the weather array
+        weather: [{description, id}], //destructure the first object in the weather array
+        wind: {speed}, //destructure the wind object
+        sys: {country}} //destructure the sys object
+
         = data; 
 
     card.textContent = "";
     card.style.display = "flex";
 
     const cityDisplay = document.createElement("h1")
+    const countryDisplay = document.createElement("p")
     const tempDisplay = document.createElement("p")
+    const windspeed = document.createElement("p")
     const humidityDisplay = document.createElement("p")
     const descDisplay = document.createElement("p")
     const weatherEmoji = document.createElement("p")
 
     cityDisplay.textContent = city;
+    countryDisplay.textContent = country;
     tempDisplay.textContent = `${((temp - 273.15) * 9/5 + 32).toFixed(1)}°F`;
+    windspeed.textContent = `Wind Speed: ${speed}`;
     humidityDisplay.textContent = `Humidity: ${humidity}%`;
     descDisplay.textContent = description;
     weatherEmoji.textContent = getWeatherEmoji(id)
@@ -64,14 +71,17 @@ function displayWeatherInfo(data){
 
     //add the class atributes from the css file to the proper elements
     cityDisplay.classList.add("cityDisplay")
+    countryDisplay.classList.add("countryDisplay")
     tempDisplay.classList.add("tempDisplay")
+    windspeed.classList.add("windspeed")
     humidityDisplay.classList.add("humidityDisplay")
     descDisplay.classList.add("descDisplay")
     weatherEmoji.classList.add("weatherEmoji")
     
-
     card.appendChild(cityDisplay)
+    card.appendChild(countryDisplay)
     card.appendChild(tempDisplay)
+    card.appendChild(windspeed)
     card.appendChild(humidityDisplay)
     card.appendChild(descDisplay)
     card.appendChild(weatherEmoji)
