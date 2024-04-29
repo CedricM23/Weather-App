@@ -63,7 +63,7 @@ function displayWeatherInfo(data){
     cityDisplay.textContent = city;
     countryDisplay.textContent = country;
     tempDisplay.textContent = `${((temp - 273.15) * 9/5 + 32).toFixed(1)}°F`;
-    windspeed.textContent = `Wind Speed: ${speed}`;
+    windspeed.textContent = `Wind Speed: ${speed} mph`;
     humidityDisplay.textContent = `Humidity: ${humidity}%`;
     descDisplay.textContent = description;
     weatherEmoji.textContent = getWeatherEmoji(id)
